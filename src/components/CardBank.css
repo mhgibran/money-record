@@ -1,0 +1,17 @@
+.card-bank {
+    border: 1px solid #0166FF;
+    border-radius: 16px;
+}
+img {
+    width: 100%;
+    max-width: 100px;
+    height: 100%;
+    object-fit: cover;
+}
+p {
+    font-weight: 500;
+    font-size: 12px !important;
+}
+p, small {
+    font-size: 12px;
+}

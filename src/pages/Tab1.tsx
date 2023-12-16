@@ -1,22 +1,15 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Tab1.css';
+import { IonContent, IonPage } from "@ionic/react";
+import "./Tab1.css";
+import BankSummary from "../components/BankSummary";
+import LatestTransaction from "../components/LatestTransaction";
 
 const Tab1: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <BankSummary />
+        <LatestTransaction type="in" />
+        <LatestTransaction type="out" />
       </IonContent>
     </IonPage>
   );

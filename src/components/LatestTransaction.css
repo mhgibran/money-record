@@ -1,0 +1,13 @@
+.img {
+    object-fit: cover !important;
+    width: 100% !important;
+    max-width: 60px !important;
+}
+p {
+    font-size: 14px !important;
+    font-weight: bold !important;
+}
+.text-muted {
+    font-size: 12px !important;
+    font-weight: lighter !important;
+}
