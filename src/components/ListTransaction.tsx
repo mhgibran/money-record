@@ -1,55 +1,57 @@
-import "./LatestTransaction.css";
+import "./ListTransaction.css";
 import { IonCard, IonCol, IonGrid, IonImg, IonRow } from "@ionic/react";
 import SeeAllButton from "./button/SeeAll";
 import SaldoText from "./text/SaldoText";
 import { dateFormat } from "../utils/DateTimeFormat";
 
-interface ContainerProps {
+interface DataTransaction {
+  name: string;
+  total: number;
+  created_at: string;
   type: string;
 }
 
-const LatestTransaction: React.FC<ContainerProps> = ({ type }) => {
-  const data = [
-    {
-      name: "Belanja Bulanan",
-      total: 300000,
-      created_at: "2023-09-10",
-    },
-    {
-      name: "Bayar Tagihan Listrik",
-      total: 200000,
-      created_at: "2023-09-15",
-    },
-    {
-      name: "Bayar Tagihan Air",
-      total: 50000,
-      created_at: "2023-09-15",
-    },
-  ];
+interface ContainerProps {
+  title: string;
+  data: DataTransaction[];
+  seeAll?: boolean;
+}
+
+const ListTransaction: React.FC<ContainerProps> = ({
+  title,
+  data,
+  seeAll = false,
+}) => {
   return (
     <IonGrid>
       <IonRow class="ion-justify-content-between ion-align-items-center ion-padding-horizontal">
         <IonCol size="7">
-          <h6 className="text-muted">
-            {type === "in" ? "Incoming" : "Outcoming"} Transactions
-          </h6>
+          <h6 className="text-muted">{title}</h6>
         </IonCol>
-        <IonCol size="5" class="ion-text-end ion-no-padding">
-          <SeeAllButton />
-        </IonCol>
+        {seeAll ? (
+          <IonCol size="5" class="ion-text-end ion-no-padding">
+            <SeeAllButton />
+          </IonCol>
+        ) : (
+          ""
+        )}
       </IonRow>
       {data && data.length
         ? data.map((item, index) => {
             return (
               <IonCard
                 key={`card-in-transaction-${index}`}
-                className="ion-margin-horizontal"
+                className="ion-margin-horizontal border-radius-2"
               >
                 <IonRow class="ion-justify-content-between ion-align-items-center">
                   <IonCol size="2">
                     <IonImg
-                      class="img-rounded img"
-                      src={`https://ui-avatars.com/api/?name=${item.name}`}
+                      class="img"
+                      src={`https://ui-avatars.com/api/?name=${
+                        item.name
+                      }&background=${
+                        item.type === "out" ? "7d8bcf" : "8ad6e8"
+                      }&color=ffff&rounded=true`}
                     />
                   </IonCol>
                   <IonCol size="6">
@@ -72,4 +74,4 @@ const LatestTransaction: React.FC<ContainerProps> = ({ type }) => {
   );
 };
 
-export default LatestTransaction;
+export default ListTransaction;

@@ -4,7 +4,7 @@ import { chevronForwardOutline } from "ionicons/icons";
 
 const SeeAllButton: React.FC = () => {
   return (
-    <IonButton className="ion-no-padding" fill="clear">
+    <IonButton size="small" className="ion-no-padding" fill="clear">
       See All <IonIcon icon={chevronForwardOutline}></IonIcon>
     </IonButton>
   );
